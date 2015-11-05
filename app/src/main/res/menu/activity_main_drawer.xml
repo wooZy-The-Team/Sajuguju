@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/notification"
+            android:title="Notification" />
+        <item
+            android:id="@+id/nav_parlors"
+            android:icon="@drawable/parlors"
+            android:title="Parlors" />
+        <item
+            android:id="@+id/nav_nearestparlor"
+            android:icon="@drawable/nearestparlor"
+            android:title="Nearest Parlor" />
+        <item
+            android:id="@+id/nav_History"
+            android:icon="@drawable/history"
+            android:title="History" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_account"
+                android:icon="@drawable/account"
+                android:title="Account" />
+            <item
+                android:id="@+id/nav_signout"
+                android:icon="@drawable/signout"
+                android:title="Sign Out" />
+        </menu>
+    </item>
+
+</menu>
