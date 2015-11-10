@@ -1,9 +1,13 @@
 package rm.woozy.com.sajuguju;
 
-import android.graphics.Bitmap;
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,8 +19,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import rm.woozy.com.sajuguju.Fragments.Account;
+import rm.woozy.com.sajuguju.Fragments.Addrequest;
+import rm.woozy.com.sajuguju.Fragments.History;
+import rm.woozy.com.sajuguju.Fragments.NearestParlors;
+import rm.woozy.com.sajuguju.Fragments.Notification;
+import rm.woozy.com.sajuguju.Fragments.Parlors;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Fragment fragment = null;
+    String title = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +43,16 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                  //      .setAction("Action", null).show();
+                fragment = new Addrequest();
+                title = "Request";
+
+                FragmentManager fmanager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fmanager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment, fragment);
+                fragmentTransaction.commit();
+                setTitle(title);
             }
         });
 
@@ -87,18 +109,40 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_notification) {
             // Handle the notification action
+            fragment = new Notification();
+            title = "Notification";
             Toast.makeText(this, "Notification", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_parlors) {
 
+            fragment = new Parlors();
+            title = "Parlors";
+            Toast.makeText(this, "Parlors", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_nearestparlor) {
 
+            fragment = new NearestParlors();
+            title = "Nearest Parlors";
+            Toast.makeText(this, "Nearest Parlors", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_History) {
-
+            fragment = new History();
+            title = "History";
+            Toast.makeText(this, "History", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_account) {
-
+            fragment = new Account();
+            title = "Account";
+            Toast.makeText(this, "Account", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_signout) {
 
         }
+
+        if(fragment!=null){
+            FragmentManager fmanager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fmanager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment, fragment);
+            fragmentTransaction.commit();
+            setTitle(title);
+        }
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
