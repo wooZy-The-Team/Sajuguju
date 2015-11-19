@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import rm.woozy.com.sajuguju.Preference.SharedPref;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
@@ -15,9 +17,17 @@ public class SplashScreen extends AppCompatActivity {
             public void run(){
                 try {
                     sleep(2000);
-                    Intent intent = new Intent(SplashScreen.this , LoginScreen.class);
-                    startActivity(intent);
-                    finish();
+                    SharedPref pref = new SharedPref(SplashScreen.this);
+                    if(pref.isLogin()){
+                        Intent intent = new Intent(SplashScreen.this , MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Intent intent = new Intent(SplashScreen.this , LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

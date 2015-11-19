@@ -4,6 +4,7 @@ package rm.woozy.com.sajuguju;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,6 +26,7 @@ import rm.woozy.com.sajuguju.Fragments.History;
 import rm.woozy.com.sajuguju.Fragments.NearestParlors;
 import rm.woozy.com.sajuguju.Fragments.Notification;
 import rm.woozy.com.sajuguju.Fragments.Parlors;
+import rm.woozy.com.sajuguju.Preference.SharedPref;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,8 +45,6 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                  //      .setAction("Action", null).show();
                 fragment = new Addrequest();
                 title = "Request";
 
@@ -64,9 +64,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
+        navigationView.setCheckedItem(R.id.nav_notification);
     }
 
     @Override
@@ -88,18 +86,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -131,7 +126,12 @@ public class MainActivity extends AppCompatActivity
             title = "Account";
             Toast.makeText(this, "Account", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_signout) {
-
+            SharedPref pref = new SharedPref(MainActivity.this);
+            if(pref.logout()){
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
 
         if(fragment!=null){
