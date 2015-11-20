@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailEditText, passwordEditText;
     Button loginButton;
     String temp_token = "";
+    RelativeLayout progerss;
 
 
     @Override
@@ -75,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText = (EditText) findViewById(R.id.email);
         passwordEditText = (EditText) findViewById(R.id.password);
         loginButton = (Button) findViewById(R.id.loginButton);
+        progerss = (RelativeLayout) findViewById(R.id.progressBar);
     }
 
     private String getToken(String Email, String Pass) {
@@ -154,6 +157,11 @@ public class LoginActivity extends AppCompatActivity {
             this.password = password;
         }
 
+        @Override
+        protected void onPreExecute() {
+            progerss.setVisibility(View.VISIBLE);
+
+        }
 
         @Override
         protected Boolean doInBackground(Void... params) {
@@ -173,6 +181,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
+            progerss.setVisibility(View.GONE);
             if (aBoolean) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);

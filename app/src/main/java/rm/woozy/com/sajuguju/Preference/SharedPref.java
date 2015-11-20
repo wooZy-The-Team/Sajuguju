@@ -1,14 +1,12 @@
 package rm.woozy.com.sajuguju.Preference;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import rm.woozy.com.sajuguju.MainActivity;
 import rm.woozy.com.sajuguju.Others.Constants;
 
 /**

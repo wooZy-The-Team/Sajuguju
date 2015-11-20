@@ -4,19 +4,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_notification"
-            android:icon="@drawable/notification"
+            android:icon="@drawable/ic_notifications_black_36dp"
             android:title="Notification" />
         <item
             android:id="@+id/nav_parlors"
-            android:icon="@drawable/parlors"
+            android:icon="@drawable/ic_brush_black_36dp"
             android:title="Parlors" />
         <item
             android:id="@+id/nav_nearestparlor"
-            android:icon="@drawable/nearestparlor"
+            android:icon="@drawable/ic_near_me_black_36dp"
             android:title="Nearest Parlor" />
         <item
             android:id="@+id/nav_History"
-            android:icon="@drawable/history"
+            android:icon="@drawable/ic_history_black_36dp"
             android:title="History" />
     </group>
 
@@ -24,7 +24,7 @@
         <menu>
             <item
                 android:id="@+id/nav_account"
-                android:icon="@drawable/account"
+                android:icon="@drawable/ic_person_black_36dp"
                 android:title="Account" />
             <item
                 android:id="@+id/nav_signout"
