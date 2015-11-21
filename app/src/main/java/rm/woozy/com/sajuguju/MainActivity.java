@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import rm.woozy.com.sajuguju.Fragments.*;
+import rm.woozy.com.sajuguju.Preference.AddRequest;
 import rm.woozy.com.sajuguju.Preference.SharedPref;
 
 public class MainActivity extends AppCompatActivity
@@ -45,8 +46,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(getApplicationContext(), AddRequest.class));
             }
         });
 
